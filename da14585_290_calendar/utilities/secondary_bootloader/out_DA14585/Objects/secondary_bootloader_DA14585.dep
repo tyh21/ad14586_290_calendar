@@ -1,0 +1,433 @@
+Dependencies for Project 'secondary_bootloader', Target 'DA14585': (DO NOT MODIFY !)
+CompilerVersion: 6160000::V6.16::ARMCLANG
+F (..\..\sdk\platform\arch\boot\ARM\startup_DA14585_586.s)(0x637DF06C)(--cpu Cortex-M0 --li -g --pd "__MICROLIB SETA 1"-ID:\ProgramData\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM0\Include--pd "__UVISION_VERSION SETA 536"--pd "ARMCM0 SETA 1"--list .\out_da14585\listings\startup_da14585_586.lst--xref -o .\out_da14585\objects\startup_da14585_586.o--depend .\out_da14585\objects\startup_da14585_586.d)
+F (..\..\sdk\platform\arch\boot\system_DA14585_586.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/system_da14585_586.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+F (..\..\sdk\platform\arch\main\hardfault_handler.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/hardfault_handler.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\uart\uart.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\main\arch_wdg.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\syscntl\syscntl.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+F (..\..\sdk\platform\arch\main\nmi_handler.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/nmi_handler.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\main\arch_wdg.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\syscntl\syscntl.h)(0x637DF06C)
+F (..\..\sdk\platform\arch\boot\system_DA14531.c)(0x637DF06C)()
+F (..\..\sdk\platform\arch\boot\ARM\startup_DA14531.s)(0x637DF06C)()
+F (.\src\bootloader.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/bootloader.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x603507D4)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (includes\uart_booter.h)(0x637DF06C)
+I (includes\bootloader.h)(0x644D216F)
+I (..\..\sdk\platform\driver\spi_flash\spi_flash.h)(0x637DF06C)
+I (includes\decrypt.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\spi_flash\spi_flash.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/spi_flash.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x603507D4)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\driver\spi_flash\spi_flash.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\gpio\gpio.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/gpio.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/i2c_eeprom.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+F (.\src\main.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/main.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x603507D4)
+I (..\..\sdk\platform\arch\main\arch_system.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch_api.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\core_modules\nvds\api\nvds.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\main\arch_wdg.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\syscntl\syscntl.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (includes\uart_booter.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi_flash\spi_flash.h)(0x637DF06C)
+I (includes\bootloader.h)(0x644D216F)
+I (..\..\sdk\platform\driver\uart\uart.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc_58x.h)(0x637DF06C)
+F (.\src\uart_booter.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/uart_booter.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x603507D4)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (includes\uart_booter.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\uart\uart.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\systick\systick.h)(0x637DF06C)
+F (..\..\third_party\crc32\crc32.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/crc32.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+F (..\..\sdk\platform\core_modules\crypto\sw_aes.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/sw_aes.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\core_modules\crypto\sw_aes.h)(0x637DF06C)
+F (.\src\decrypt.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/decrypt.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (..\..\sdk\platform\core_modules\crypto\sw_aes.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (includes\uart_booter.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\dma\dma.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/dma.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+F (..\..\sdk\platform\driver\spi\spi_58x.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/spi_58x.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\spi\spi_531.c)(0x637DF06C)()
+F (..\..\sdk\platform\driver\i2c\i2c.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/i2c.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\uart\uart.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/uart.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\uart\uart.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+F (..\..\sdk\platform\driver\systick\systick.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/systick.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x603507D4)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\systick\systick.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\syscntl\syscntl.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/syscntl.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\syscntl\syscntl.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\hw_otpc\hw_otpc_58x.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/hw_otpc_58x.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc_58x.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+F (..\..\sdk\platform\driver\hw_otpc\hw_otpc_531.c)(0x637DF06C)()
+F (..\..\sdk\platform\driver\adc\adc_531.c)(0x637DF06C)()
+F (..\..\sdk\platform\utilities\otp_cs\otp_cs.c)(0x637DF06C)()
+F (..\..\sdk\platform\arch\main\arch_system.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/arch_system.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\arch_api.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
+I (..\..\sdk\platform\core_modules\nvds\api\nvds.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\main\arch_wdg.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\main\arch_system.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\hw_otpc\hw_otpc_58x.h)(0x637DF06C)
+I (..\..\sdk\platform\utilities\otp_hdr\otp_hdr.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+F (.\src\user_periph_setup.c)(0x637DF06C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -Oz -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./includes -I ../../sdk/platform/include -I ../../sdk/platform/driver/spi -I ../../sdk/platform/driver/i2c_eeprom -I ../../sdk/platform/driver/i2c -I ../../sdk/platform/driver/spi_flash -I ../../sdk/platform/driver/gpio -I ../../sdk/platform/driver/dma -I ../../sdk/platform/arch -I ../../sdk/platform/arch/compiler -I ../../sdk/platform/arch/ll -I ../../sdk/platform/driver/reg -I ../../sdk/platform/driver/syscntl -I ../../sdk/platform/driver/uart -I ../../sdk/platform/driver/timer -I ../../sdk/platform/core_modules/crypto -I ../../sdk/platform/driver/systick -I ../../sdk/platform/driver/hw_otpc -I ../../sdk/platform/arch/main -I ../../sdk/platform/core_modules/nvds/api -I ../../sdk/platform/utilities/otp_hdr -I ../../sdk/platform/include/CMSIS/5.9.0/CMSIS/Core/Include -mthumb -c -include da1458x_config_basic.h-ID:/ProgramData/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM0/Include-D__UVISION_VERSION="536" -DARMCM0 -D__NON_BLE_EXAMPLE__-o ./out_da14585/objects/user_periph_setup.o -MD)
+I (includes\da1458x_config_basic.h)(0x637DF06C)
+I (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)
+I (..\..\sdk\platform\include\da14585_586.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\include\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x637DF06C)
+I (..\..\sdk\platform\include\system_DA14585_586.h)(0x637DF06C)
+I (includes\user_periph_setup.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
+I (..\..\sdk\platform\arch\arch.h)(0x637DF06A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x603507D0)
+I (..\..\sdk\platform\arch\compiler\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\compiler\ARM_clang\compiler.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\ll\ll.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\i2c\i2c.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\dma\dma.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\spi\spi_58x.h)(0x637DF06C)
+I (..\..\sdk\platform\driver\syscntl\syscntl.h)(0x637DF06C)
+I (includes\bootloader.h)(0x644D216F)
+I (..\..\sdk\platform\arch\fpga_helper.h)(0x637DF06C)
+I (..\..\sdk\platform\arch\fpga.h)(0x637DF06C)
+F (.\includes\user_periph_setup.h)(0x637DF06C)()
+F (..\..\sdk\platform\include\datasheet.h)(0x637DF06C)()
+F (..\..\sdk\platform\driver\spi\spi.h)(0x637DF06C)()
+F (..\..\sdk\platform\driver\spi_flash\spi_flash.h)(0x637DF06C)()
+F (..\..\sdk\platform\driver\gpio\gpio.h)(0x637DF06C)()
+F (..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x637DF06C)()
+F (.\includes\uart_booter.h)(0x637DF06C)()
+F (.\includes\bootloader.h)(0x644D216F)()
+F (..\..\sdk\platform\core_modules\crypto\sw_aes.h)(0x637DF06C)()
+F (..\..\sdk\platform\driver\uart\uart.h)(0x637DF06C)()
+F (.\includes\da1458x_config_basic.h)(0x637DF06C)()
