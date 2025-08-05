@@ -97,7 +97,7 @@ uint16_t time_refresh_count __SECTION_ZERO("retention_mem_area0");
 uint8_t isconnected __SECTION_ZERO("retention_mem_area0");
 tm_t g_tm __SECTION_ZERO("retention_mem_area0");
 uint8_t is_part __SECTION_ZERO("retention_mem_area0");
-uint8_t buf[50];
+char buf[50];
 uint8_t buf2[50];
 void bls_att_pushNotifyData(uint16_t attHandle, uint8_t *p, uint8_t len);
 void display(void);
@@ -118,62 +118,6 @@ static void spi_flash_peripheral_init(void)
 
 // 添加全局变量来存储当前显示模式
 uint8_t current_display_mode __SECTION_ZERO("retention_mem_area0");  // = DISPLAY_MODE_TIME;
-
-/*
- * @brief 修改后的时间显示函数，支持多种显示模式
- void do_display_update(void)
-{
-    switch (current_display_mode)
-    {
-        case DISPLAY_MODE_TIME:
-            // 原有的时间显示逻辑
-            do_time_show();
-            break;
-            
-        case DISPLAY_MODE_CALENDAR:
-            // 新的日历显示逻辑
-            transformTime(current_unix_time, &g_tm);
-            Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
-            Paint_SelectImage(epd_buffer);
-            Paint_SetMirroring(MIRROR_VERTICAL);
-            
-            // 绘制日历页面
-            draw_calendar_page(current_unix_time);
-            
-            // 添加电池电量显示
-            Paint_DrawRectangle(212 - 24, 6 + 2, 212 - 24 + 2, 8 + 2 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-            Paint_DrawRectangle(212 - 22, 1 + 2, 211, 20 - 5 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-            sprintf(buf, "%d", cur_batt_level);
-            if (cur_batt_level > 9 && cur_batt_level < 100)
-            {
-                sprintf(buf, " %d", cur_batt_level);
-            }
-            else if (cur_batt_level < 10)
-            {
-                sprintf(buf, "  %d", cur_batt_level);
-            }
-            EPD_DrawUTF8(212 - 23, 1 + 2, 0, buf, EPD_ASCII_7X12, 0, WHITE, BLACK);
-            
-            // 蓝牙连接状态指示
-            if (isconnected == 1)
-            {
-                EPD_DrawUTF8(212 - 10, 104-14, 0, "B", EPD_ASCII_7X12, 0, WHITE, BLACK);
-            }
-            break;
-            
-        default:
-            // 默认使用时间显示
-            do_time_show();
-            break;
-    }
-    
-    if (g_tm.tm_min == 0)
-    {
-        is_part = 0;
-    }
-    step = 0;
-}
-*/
 
 /**
  * @brief 修改后的显示更新函数，支持模拟时钟
@@ -350,28 +294,6 @@ void do_time_show(void)
     }
     step = 0;
 }
-
-/*
-void do_min_work(void)
-{
-    timer_used_min = app_easy_timer(APP_PERIPHERAL_CTRL_TIMER_DELAY_MINUTES, do_min_work);
-    current_unix_time += time_offset;
-    time_offset = 60;
-    
-    arch_printf("current_unix_time:%d\n", current_unix_time);
-    
-    // 使用新的显示更新函数
-    do_display_update_with_analog_clock();
-    
-    if (step == 0)
-    {
-        step = 1;
-        display();
-    }
-}
-*/
-
-
 
 /**
  * @brief 修改后的分钟工作函数
@@ -616,77 +538,6 @@ void user_svc1_led_wr_ind_handler(ke_msg_id_t const msgid,
         return;
     }
 }
-
-/*
-void user_svc2_wr_ind_handler(ke_msg_id_t const msgid,
-                              struct custs1_val_write_ind const *param,
-                              ke_task_id_t const dest_id,
-                              ke_task_id_t const src_id)
-{
-    arch_printf("cmd HEX %d:", param->length);
-    for (int i = 0; i < param->length; i++)
-    {
-        arch_printf("%02X", param->value[i]);
-    }
-    arch_printf("\r\n");
-    
-    if ((param->value[0] == 0xDD) && (param->length >= 5))
-    {
-        // 时间设置逻辑保持不变
-        current_unix_time = (param->value[1] << 24) + (param->value[2] << 16) + (param->value[3] << 8) + (param->value[4] & 0xff);
-        tm_t tm = {0};
-        transformTime(current_unix_time, &tm);
-        app_easy_timer_cancel(timer_used_min);
-        time_offset = 60 - tm.tm_sec;
-        timer_used_min = app_easy_timer(time_offset * 100, do_min_work);
-        arch_printf("%d-%02d-%02d %02d:%02d:%02d %d\n", tm.tm_year + YEAR0,
-                    tm.tm_mon + 1,
-                    tm.tm_mday,
-                    tm.tm_hour,
-                    tm.tm_min,
-                    tm.tm_sec,
-                    tm.tm_wday);
-    }
-    else if (param->value[0] == 0xAA)
-    {
-        platform_reset(RESET_NO_ERROR);
-    }
-    else if (param->value[0] == 0xAB)
-    {
-        // do_img_save();
-    }
-    else if (param->value[0] == 0xE2)
-    {
-        // 刷新当前显示模式
-        do_display_update();
-        is_part = 0;
-        step = 1;
-        display();
-    }
-    else if (param->value[0] == 0xE3)
-    {
-        // 新增：切换到时间显示模式
-        current_display_mode = DISPLAY_MODE_TIME;
-        do_display_update();
-        is_part = 0;
-        step = 1;
-        display();
-        arch_printf("Switched to TIME display mode\n");
-    }
-    else if (param->value[0] == 0xE4)
-    {
-        // 新增：切换到日历显示模式
-        current_display_mode = DISPLAY_MODE_CALENDAR;
-        do_display_update();
-        is_part = 0;
-        step = 1;
-        display();
-        arch_printf("Switched to CALENDAR display mode\n");
-    }
-}
-*/
-
-
 
 /**
  * @brief 修改后的串口命令处理函数，添加模拟时钟模式切换

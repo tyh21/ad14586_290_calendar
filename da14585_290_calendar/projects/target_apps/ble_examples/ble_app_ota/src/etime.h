@@ -20,6 +20,9 @@ typedef struct devtm
     uint8_t tm_wday;
 }tm_t;
 
+int is_leap(int yr);
+unsigned char day_of_week_get(unsigned char month, unsigned char day,
+                              unsigned short year);
 void transformTime(uint32_t unix_time,struct devtm *result);
 
 
