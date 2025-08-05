@@ -82,6 +82,7 @@
 ".\out_da14585\objects\crc32.o"
 ".\out_da14585\objects\gui_paint.o"
 ".\out_da14585\objects\calendar_display.o"
+".\out_da14585\objects\analog_clock.o"
 ".\out_da14585\objects\font16.o"
 ".\out_da14585\objects\font8.o"
 ".\out_da14585\objects\font12.o"

@@ -1,4 +1,4 @@
-./out_da14585/objects/user_custs1_impl.o: ..\src\user_custs1_impl.c \
+./out_da14585/objects/analog_clock.o: ..\src\analog_clock.c \
   ..\src\config\da1458x_config_basic.h \
   ..\..\..\..\..\sdk\common_project_files\da1458x_stack_config.h \
   ..\src\config\user_profiles_config.h \
@@ -110,46 +110,6 @@
   ..\..\..\..\..\sdk\ble_stack\profiles\suota\suotar\api\suotar.h \
   ..\..\..\..\..\sdk\app_modules\api\app_security.h \
   ..\..\..\..\..\sdk\app_modules\api\app_adv_data.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_api.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_task.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_user_config.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_entry_point.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_default_handlers.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_callback.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_easy_security.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_mid.h \
-  ..\..\..\..\..\sdk\ble_stack\controller\llm\llm.h \
-  ..\..\..\..\..\sdk\platform\core_modules\common\api\co_math.h \
-  d:\Tools\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\..\..\..\..\sdk\platform\core_modules\common\api\co_buf.h \
-  ..\..\..\..\..\sdk\platform\core_modules\common\api\co_list.h \
-  ..\..\..\..\..\sdk\ble_stack\controller\llm\llm_task.h \
-  ..\..\..\..\..\sdk\platform\core_modules\rwip\api\rwip.h \
-  ..\..\..\..\..\sdk\platform\core_modules\rwip\api\rwip_config.h \
-  ..\..\..\..\..\sdk\ble_stack\ea\api\ea.h \
-  ..\..\..\..\..\sdk\app_modules\api\app.h \
-  ..\..\..\..\..\sdk\platform\driver\uart\uart_utils.h \
-  ..\..\..\..\..\sdk\platform\driver\uart\uart.h \
-  ..\..\..\..\..\sdk\ble_stack\profiles\custom\custs\api\custs1.h \
-  ..\..\..\..\..\sdk\ble_stack\host\att\attm\attm_db_128.h \
-  ..\..\..\..\..\sdk\ble_stack\profiles\custom\custom_common.h \
-  ..\..\..\..\..\sdk\ble_stack\profiles\custom\custs\api\custs1_task.h \
-  ..\src\custom_profile\user_custs1_def.h ..\src\user_custs1_impl.h \
-  ..\..\..\..\..\sdk\platform\core_modules\arch_console\arch_console.h \
-  d:\Tools\Keil5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  ..\src\config\user_periph_setup.h \
-  ..\..\..\..\..\sdk\platform\driver\uart\uart.h ..\src\EPD_2in13_V2.h \
-  ..\..\..\..\..\sdk\platform\driver\systick\systick.h \
-  ..\src\config\user_callback_config.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_callback.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_entry_point.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_suotar.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_prf_types.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_bond_db.h ..\src\user_ota.h \
-  ..\..\..\..\..\sdk\app_modules\api\app_task.h \
-  ..\src\user_custs1_impl.h ..\src\ImageData.h ..\src\etime.h \
-  ..\src\crc32.h ..\..\..\..\..\sdk\app_modules\api\app_bass.h \
-  ..\..\..\..\..\sdk\platform\driver\battery\battery.h ..\src\user_ota.h \
-  ..\src\Fonts\fonts.h ..\src\GUI_Paint.h ..\src\Debug.h \
-  ..\src\DEV_Config.h ..\src\lunar\lunar.h ..\src\DEV_Config.h \
-  ..\src\calendar_display.h ..\src\analog_clock.h
+  ..\src\analog_clock.h ..\src\GUI_Paint.h ..\src\Debug.h \
+  ..\src\DEV_Config.h ..\src\Fonts\fonts.h ..\src\etime.h \
+  d:\Tools\Keil5\ARM\ARMCLANG\Bin\..\include\math.h

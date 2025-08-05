@@ -1,14 +1,15 @@
 /**
  ****************************************************************************************
  *
- * @file calendar_display.c
+ * @file calendar_display_modified.c
  *
- * @brief Calendar display functionality for e-paper display
+ * @brief Modified calendar display with analog clock functionality
  *
  ****************************************************************************************
  */
 
 #include "calendar_display.h"
+#include "analog_clock.h"
 #include "GUI_Paint.h"
 #include "etime.h"
 #include "fonts.h"
@@ -134,9 +135,9 @@ static void draw_calendar_dates(uint16_t year, uint8_t month, uint8_t current_da
         {
             // 绘制背景矩形
             Paint_DrawRectangle(x_start + col * cell_width + 1, 
-                              y_start + row * cell_height + 1,
-                              x_start + (col + 1) * cell_width - 1,
-                              y_start + (row + 1) * cell_height - 1,
+                              y_start + row * cell_height + 3,
+                              x_start + (col + 1) * cell_width - 3,
+                              y_start + (row + 1) * cell_height+ 3,
                               BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
             
             // 白色字体
@@ -158,7 +159,7 @@ static void draw_calendar_dates(uint16_t year, uint8_t month, uint8_t current_da
 }
 
 /**
- * @brief 绘制完整的日历页面
+ * @brief 绘制完整的日历页面（原版本，保持兼容性）
  * @param unix_time 当前Unix时间戳
  */
 void draw_calendar_page(uint32_t unix_time)
@@ -180,14 +181,55 @@ void draw_calendar_page(uint32_t unix_time)
     draw_week_header();
     
     // 绘制日历网格
-    draw_calendar_grid();
+    //draw_calendar_grid();
     
     // 绘制日期数字
     draw_calendar_dates(year, month, current_day);
     
-    // 在底部显示当前时间
+    // 在底部显示当前时间（数字格式）
     char time_buf[20];
     sprintf(time_buf, "%02d:%02d", tm.tm_hour, tm.tm_min);
-    EPD_DrawUTF8(150, 115, 1, time_buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
+    EPD_DrawUTF8(150, 110, 1, time_buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
+}
+
+/**
+ * @brief 绘制带模拟时钟的日历页面（新版本）
+ * @param unix_time 当前Unix时间戳
+ * @param force_redraw 是否强制重绘时钟
+ */
+void draw_calendar_page_with_analog_clock(uint32_t unix_time, bool force_redraw)
+{
+    tm_t tm;
+    transformTime(unix_time, &tm);
+    
+    uint16_t year = tm.tm_year + YEAR0;
+    uint8_t month = tm.tm_mon + 1;
+    uint8_t current_day = tm.tm_mday;
+    
+    if (force_redraw)
+    {
+        // 完全重绘时清空画布
+        Paint_Clear(WHITE);
+        
+        // 绘制日历标题
+        draw_calendar_title(year, month);
+        
+        // 绘制星期标题行
+        draw_week_header();
+        
+        // 绘制日历网格
+        //draw_calendar_grid();
+        
+        // 绘制日期数字
+        draw_calendar_dates(year, month, current_day);
+    }
+    
+    // 在右侧绘制模拟时钟（120x120像素）
+    // 根据屏幕尺寸调整位置：290宽度屏幕
+    uint16_t clock_x = 170; // 右侧位置
+    uint16_t clock_y = 12;  // 垂直居中
+    uint16_t clock_size = 120;
+    
+    draw_analog_clock(clock_x, clock_y, clock_size, unix_time, force_redraw);
 }
 

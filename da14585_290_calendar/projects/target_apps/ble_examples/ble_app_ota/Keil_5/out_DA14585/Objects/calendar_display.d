@@ -110,5 +110,5 @@
   ..\..\..\..\..\sdk\ble_stack\profiles\suota\suotar\api\suotar.h \
   ..\..\..\..\..\sdk\app_modules\api\app_security.h \
   ..\..\..\..\..\sdk\app_modules\api\app_adv_data.h \
-  ..\src\calendar_display.h ..\src\GUI_Paint.h ..\src\Debug.h \
-  ..\src\DEV_Config.h ..\src\Fonts\fonts.h ..\src\etime.h
+  ..\src\calendar_display.h ..\src\analog_clock.h ..\src\GUI_Paint.h \
+  ..\src\Debug.h ..\src\DEV_Config.h ..\src\Fonts\fonts.h ..\src\etime.h

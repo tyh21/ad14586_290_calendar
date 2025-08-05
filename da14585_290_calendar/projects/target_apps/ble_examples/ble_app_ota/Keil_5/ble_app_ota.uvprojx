@@ -1310,6 +1310,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\calendar_display.h</FilePath>
             </File>
+            <File>
+              <FileName>analog_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\analog_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>analog_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\analog_clock.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2673,6 +2683,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\calendar_display.h</FilePath>
             </File>
+            <File>
+              <FileName>analog_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\analog_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>analog_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\analog_clock.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3934,6 +3954,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\calendar_display.h</FilePath>
             </File>
+            <File>
+              <FileName>analog_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\analog_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>analog_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\analog_clock.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5194,6 +5224,16 @@
               <FileName>calendar_display.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\calendar_display.h</FilePath>
+            </File>
+            <File>
+              <FileName>analog_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\analog_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>analog_clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\analog_clock.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<title>电子价签蓝牙控制器-SES4.2 (带日历功能)</title>
+	<title>电子价签蓝牙控制器-SES4.2 (带模拟时钟日历功能)</title>
 	<style>
 		#tool-box>* {
 			margin-right: 5px;
@@ -19,7 +19,7 @@
 		}
 		body {
 			padding: 20px;
-			overflow-y: hidden;
+			overflow-y: auto;
 		}
 		.display-mode-section {
 			background-color: #f0f0f0;
@@ -30,6 +30,25 @@
 		.display-mode-section h4 {
 			margin-bottom: 10px;
 			color: #333;
+		}
+		.mode-button {
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			padding: 8px 16px;
+			margin: 4px;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		.mode-button:hover {
+			background-color: #45a049;
+		}
+		.analog-clock-section {
+			background-color: #e8f4f8;
+			padding: 10px;
+			margin: 10px 0;
+			border-radius: 5px;
+			border-left: 4px solid #2196F3;
 		}
 	</style>
 	<script type="application/javascript" src="js/dithering.js"></script>
@@ -105,16 +124,22 @@
 			await rxTxSendCommand(hexToBytes('e2'))
 		}
 
-		// 新增：切换到时间显示模式
+		// 切换到时间显示模式
 		async function switchToTimeMode() {
 			addLog('切换到时间显示模式');
 			await rxTxSendCommand(hexToBytes('e3'));
 		}
 
-		// 新增：切换到日历显示模式
+		// 切换到日历显示模式（数字时钟）
 		async function switchToCalendarMode() {
-			addLog('切换到日历显示模式');
+			addLog('切换到日历显示模式（数字时钟）');
 			await rxTxSendCommand(hexToBytes('e4'));
+		}
+
+		// 新增：切换到日历显示模式（模拟时钟）
+		async function switchToCalendarAnalogMode() {
+			addLog('切换到日历显示模式（模拟时钟）');
+			await rxTxSendCommand(hexToBytes('e5'));
 		}
 
 		async function triggerRxTxCmd(cmd) {
@@ -202,7 +227,7 @@
 			const date = new Date((unixNow + new Date().getTimezoneOffset() * 60)*1000);
 		  	const localeTimeString = date.toLocaleTimeString();
 
-			return {unixNow, localeTimeString, year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(), week: date.getDay()}
+			return {unixNow, localeTimeString, year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(), week: date.getDay() || 7}
 		}
 
 		document.body.onload = () => {
@@ -213,7 +238,7 @@
 		}
 	</script>
 	
-	<h2>电子价签蓝牙控制器-SES4.2 (带日历功能)</h2>
+	<h2>电子价签蓝牙控制器-SES4.2 (带模拟时钟日历功能)</h2>
 
 	<button id="connectbutton" type="button" onclick="preConnect();">链接</button>
 	<button type="button" onclick="document.getElementById('log').innerHTML = '';">清空日志</button>
@@ -221,9 +246,22 @@
 
 	<div class="display-mode-section">
 		<h4>显示模式控制</h4>
-		<button type="button" onclick="switchToTimeMode()" title="切换到时间显示模式">时间模式</button>
-		<button type="button" onclick="switchToCalendarMode()" title="切换到日历显示模式">日历模式</button>
+		<button class="mode-button" type="button" onclick="switchToTimeMode()" title="切换到时间显示模式">时间模式</button>
+		<button class="mode-button" type="button" onclick="switchToCalendarMode()" title="切换到日历显示模式（数字时钟）">日历模式（数字）</button>
+		<button class="mode-button" type="button" onclick="switchToCalendarAnalogMode()" title="切换到日历显示模式（模拟时钟）">日历模式（模拟）</button>
 		<button type="button" onclick="triggerRxTxCmd('e2')" title="刷新当前显示">刷新显示</button>
+	</div>
+
+	<div class="analog-clock-section">
+		<h4>🕐 模拟时钟功能说明</h4>
+		<p><strong>日历模式（模拟）</strong>：在日历右侧显示120x120像素的模拟时钟</p>
+		<ul>
+			<li>✅ 显示12小时数字和刻度点</li>
+			<li>✅ 时针和分针实时指示当前时间</li>
+			<li>✅ 智能刷新：数字和刻度在初始化或整点时重绘，指针每分钟局部刷新</li>
+			<li>✅ 封装设计：可轻松调整大小和位置，适配不同屏幕尺寸</li>
+		</ul>
+		<p><em>注意：模拟时钟功能需要固件支持，请确保已更新到最新版本</em></p>
 	</div>
 
 	<h3>时间设置</h3>
@@ -240,8 +278,33 @@
 	<button type="button" onclick="triggerRxTxCmd('00')" title="点击该按钮, 切换为时钟模式">刷新</button>
 	<br><br>
 
+	<h3>指令说明</h3>
+	<table border="1" style="border-collapse: collapse; margin: 10px 0;">
+		<tr>
+			<th style="padding: 5px;">指令</th>
+			<th style="padding: 5px;">功能</th>
+		</tr>
+		<tr>
+			<td style="padding: 5px;">0xE2</td>
+			<td style="padding: 5px;">刷新当前显示</td>
+		</tr>
+		<tr>
+			<td style="padding: 5px;">0xE3</td>
+			<td style="padding: 5px;">切换到时间显示模式</td>
+		</tr>
+		<tr>
+			<td style="padding: 5px;">0xE4</td>
+			<td style="padding: 5px;">切换到日历模式（数字时钟）</td>
+		</tr>
+		<tr style="background-color: #e8f4f8;">
+			<td style="padding: 5px;"><strong>0xE5</strong></td>
+			<td style="padding: 5px;"><strong>切换到日历模式（模拟时钟）</strong></td>
+		</tr>
+	</table>
+
 	<h3>日志输出</h3>
 	<div id="log" style="height: 200px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;"></div>
 
 </body>
 </html>
+
