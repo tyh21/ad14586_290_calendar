@@ -1,4 +1,4 @@
-#<SYMDEFS># ARM Linker, 6160001: Last Updated: Tue Aug  5 17:42:53 2025
+#<SYMDEFS># ARM Linker, 6160001: Last Updated: Wed Aug  6 15:00:35 2025
 0x00000000 N _printf_a
 0x00000000 N _printf_c
 0x00000000 N _printf_charcount
@@ -899,16 +899,16 @@
 0x07fc2c37 T SysTick_Handler
 0x07fc2c39 T UART2_Handler
 0x07fc2ccd T WKUP_QUADEC_Handler
-0x07fc6cf5 T main
-0x07fc7d55 T rwble_isr
-0x07fc92d5 T __0sprintf$8
-0x07fc92d5 T __1sprintf$8
-0x07fc92d5 T __2sprintf
-0x07fc99e1 T __scatterload_copy
-0x07fc99ef T __scatterload_null
-0x07fc99f1 T __scatterload_zeroinit
-0x07fc9fc1 T SystemInit
-0x07fcdfb8 D __initial_sp
+0x07fc6d1d T main
+0x07fc7d7d T rwble_isr
+0x07fc92fd T __0sprintf$8
+0x07fc92fd T __1sprintf$8
+0x07fc92fd T __2sprintf
+0x07fc9a09 T __scatterload_copy
+0x07fc9a17 T __scatterload_null
+0x07fc9a19 T __scatterload_zeroinit
+0x07fc9fe9 T SystemInit
+0x07fce010 D __initial_sp
 0x07fd7600 D ble_wakeup_executed
 0x07fd7601 D rf_in_sleep
 0x07fd7604 D custom_preinit

@@ -184,9 +184,9 @@ void draw_calendar_with_analog_clock(uint32_t unix_time, bool force_redraw)
         
         // 绘制星期标题行
         const char* week_names_cn[] = {"日", "一", "二", "三", "四", "五", "六"};
-        uint8_t x_start = 10;
-        uint8_t y_pos = 25;
-        uint8_t cell_width = 28;
+        uint8_t x_start = 0;
+        uint8_t y_pos =20;
+        uint8_t cell_width = 22;
         
         for (uint8_t i = 0; i < 7; i++)
         {
@@ -196,10 +196,10 @@ void draw_calendar_with_analog_clock(uint32_t unix_time, bool force_redraw)
         
         // 绘制日历网格
         uint8_t y_start = 40;
-        uint8_t cell_height = 12;
+        uint8_t cell_height = 14;
         uint8_t grid_width = 7 * cell_width;
-        uint8_t grid_height = 6 * cell_height;
-        
+        uint8_t grid_height = 7 * cell_height;
+        /*
         // 绘制水平线
         for (uint8_t i = 0; i <= 6; i++)
         {
@@ -213,7 +213,7 @@ void draw_calendar_with_analog_clock(uint32_t unix_time, bool force_redraw)
             uint8_t x = x_start + i * cell_width;
             Paint_DrawLine(x, y_start, x, y_start + grid_height, BLACK, DOT_PIXEL_1X1, LINE_STYLE_SOLID);
         }
-        
+        */
         // 绘制日期数字
         const uint8_t days_in_month[2][12] = {
             {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // 非闰年
@@ -239,9 +239,9 @@ void draw_calendar_with_analog_clock(uint32_t unix_time, bool force_redraw)
             {
                 // 当前日期反色显示
                 Paint_DrawRectangle(x_start + col * cell_width + 1, 
-                                  y_start + row * cell_height + 1,
-                                  x_start + (col + 1) * cell_width - 1,
-                                  y_start + (row + 1) * cell_height - 1,
+                                  y_start + row * cell_height + 3,
+                                  x_start + (col + 1) * cell_width - 3,
+                                  y_start + (row + 1) * cell_height+ 3,
                                   BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
                 EPD_DrawUTF8(x_pos, y_pos, 0, day_buf, EPD_ASCII_7X12, 0, WHITE, BLACK);
             }
@@ -261,7 +261,7 @@ void draw_calendar_with_analog_clock(uint32_t unix_time, bool force_redraw)
     
     // 在右下角绘制模拟时钟（120x120像素）
     uint16_t clock_x = 170; // 适合290宽度屏幕的位置
-    uint16_t clock_y = 12;  // 垂直居中位置
+    uint16_t clock_y = 10;  // 垂直居中位置
     uint16_t clock_size = 120;
     
     draw_analog_clock(clock_x, clock_y, clock_size, unix_time, force_redraw);

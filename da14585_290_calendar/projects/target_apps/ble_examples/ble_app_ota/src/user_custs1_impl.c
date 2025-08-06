@@ -40,6 +40,8 @@
 #include "lunar.h"
 #include "calendar_display.h"
 #include "analog_clock.h"
+//#include "otp_hdr.h"
+#include "co_bt.h"
 
 /*
  * GLOBAL VARIABLE DEFINITIONS
@@ -103,6 +105,7 @@ void bls_att_pushNotifyData(uint16_t attHandle, uint8_t *p, uint8_t len);
 void display(void);
 void do_time_show(void);
 uint8_t dev_id __SECTION_ZERO("retention_mem_area0");
+
 static void spi_flash_peripheral_init(void)
 {
     // Release the SPI flash memory from power down
@@ -154,15 +157,22 @@ void do_display_update_with_analog_clock(void)
             Paint_SetMirroring(MIRROR_VERTICAL);
             Paint_Clear(WHITE);
             
-            sprintf(buf, "%d-%02d-%02d", g_tm.tm_year + YEAR0, g_tm.tm_mon + 1, g_tm.tm_mday);
+            sprintf(buf, "%d-%02d-%02d", g_tm.tm_year + YEAR0, g_tm.tm_mon + 1, g_tm.tm_mday);                   //年月日
             EPD_DrawUTF8(5, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
-            sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]);
-            EPD_DrawUTF8(5 + 125, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
+            sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]);                                                        //星期
+            EPD_DrawUTF8(5 + 125, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);                 //时间
             sprintf(buf, "%02d", g_tm.tm_hour);
             EPD_DrawUTF8(10, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
             EPD_DrawUTF8(10 + 86 - 10, 20 + 2, 5, ":", EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
             sprintf(buf, "%02d", g_tm.tm_min);
-            EPD_DrawUTF8(10 + 86 + 20, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+            EPD_DrawUTF8(10 + 86 + 20, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE); 
+            // 获取并显示MAC地址后六位
+            extern struct bd_addr dev_bdaddr;
+            sprintf((char *)buf2, "MAC: %02X:%02X:%02X:%02X:%02X:%02X",
+            dev_bdaddr.addr[5], dev_bdaddr.addr[4], dev_bdaddr.addr[3],
+            dev_bdaddr.addr[2], dev_bdaddr.addr[1], dev_bdaddr.addr[0]);
+            EPD_DrawUTF8(80, 128-14, 0, (const char *)buf2, EPD_ASCII_7X12, 0, BLACK, WHITE);
+             // 获取并显示MAC地址后六位     
             break;
             
         case DISPLAY_MODE_CALENDAR:
@@ -170,7 +180,6 @@ void do_display_update_with_analog_clock(void)
             Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
             Paint_SelectImage(epd_buffer);
             Paint_SetMirroring(MIRROR_VERTICAL);
-            
             draw_calendar_page(current_unix_time);
             break;
             
@@ -179,7 +188,6 @@ void do_display_update_with_analog_clock(void)
             Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
             Paint_SelectImage(epd_buffer);
             Paint_SetMirroring(MIRROR_VERTICAL);
-            
             // 使用新的模拟时钟日历函数
             draw_calendar_with_analog_clock(current_unix_time, force_redraw || minute_changed);
             break;
@@ -192,8 +200,8 @@ void do_display_update_with_analog_clock(void)
     }
     
     // 添加电池电量显示（所有模式通用）
-    Paint_DrawRectangle(212 - 24, 6 + 2, 212 - 24 + 2, 8 + 2 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-    Paint_DrawRectangle(212 - 22, 1 + 2, 211, 20 - 5 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
+    Paint_DrawRectangle(296 - 24, 6 + 2, 296 - 24 + 2, 8 + 2 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
+    Paint_DrawRectangle(296 - 22, 1 + 2, 295, 20 - 5 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
     sprintf(buf, "%d", cur_batt_level);
     if (cur_batt_level > 9 && cur_batt_level < 100)
     {
@@ -203,14 +211,14 @@ void do_display_update_with_analog_clock(void)
     {
         sprintf(buf, "  %d", cur_batt_level);
     }
-    EPD_DrawUTF8(212 - 23, 1 + 2, 0, buf, EPD_ASCII_7X12, 0, WHITE, BLACK);
+    EPD_DrawUTF8(296 - 23, 1 + 2, 0, buf, EPD_ASCII_7X12, 0, WHITE, BLACK);
     
     // 蓝牙连接状态指示
     if (isconnected == 1)
     {
-        EPD_DrawUTF8(212 - 10, 104-14, 0, "B", EPD_ASCII_7X12, 0, WHITE, BLACK);
+        EPD_DrawUTF8(296 - 10, 128-12, 0, "B", EPD_ASCII_7X12, 0, WHITE, BLACK);
     }
-    
+
     if (g_tm.tm_min == 0)
     {
         is_part = 0;
@@ -252,47 +260,6 @@ void do_img_save(void)
         // }
         spi_flash_ultra_deep_power_down();
     }
-}
-// const char WEEKCN[8][4] =
-//     {"日", "一", "二", "三", "四", "五", "六", "日"};
-void do_time_show(void)
-{
-    transformTime(current_unix_time, &g_tm);
-    Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
-    Paint_SelectImage(epd_buffer);
-    Paint_SetMirroring(MIRROR_VERTICAL);
-    Paint_Clear(WHITE);
-    sprintf(buf, "%d-%02d-%02d", g_tm.tm_year + YEAR0, g_tm.tm_mon + 1, g_tm.tm_mday);
-
-    EPD_DrawUTF8(5, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
-    sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]);
-    EPD_DrawUTF8(5 + 125, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
-    sprintf(buf, "%02d", g_tm.tm_hour);
-    EPD_DrawUTF8(10, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
-    EPD_DrawUTF8(10 + 86 - 10, 20 + 2, 5, ":", EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
-    sprintf(buf, "%02d", g_tm.tm_min);
-    EPD_DrawUTF8(10 + 86 + 20, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
-    Paint_DrawRectangle(212 - 24, 6 + 2, 212 - 24 + 2, 8 + 2 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-    Paint_DrawRectangle(212 - 22, 1 + 2, 211, 20 - 5 + 2, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-    sprintf(buf, "%d", cur_batt_level);
-    if (cur_batt_level > 9 && cur_batt_level < 100)
-    {
-        sprintf(buf, " %d", cur_batt_level);
-    }
-    else if (cur_batt_level < 10)
-    {
-        sprintf(buf, "  %d", cur_batt_level);
-    }
-    EPD_DrawUTF8(212 - 23, 1 + 2, 0, buf, EPD_ASCII_7X12, 0, WHITE, BLACK);
-    if (isconnected == 1)
-    {
-        EPD_DrawUTF8(212 - 10, 104-14, 0, "B", EPD_ASCII_7X12, 0, WHITE, BLACK);
-    }
-    if (g_tm.tm_min == 0)
-    {
-        is_part = 0;
-    }
-    step = 0;
 }
 
 /**
