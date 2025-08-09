@@ -75,34 +75,7 @@ static void draw_week_header(void)
         EPD_DrawUTF8(x_pos + 8, y_pos, 0, week_names_cn[i], EPD_ASCII_7X12, EPD_FontUTF8_16x16, BLACK, WHITE);
     }
 }
-
-/**
- * @brief 绘制日历网格
- */
-static void draw_calendar_grid(void)
-{
-    uint8_t x_start = 10;
-    uint8_t y_start = 40;
-    uint8_t cell_width = 28;
-    uint8_t cell_height = 12;
-    uint8_t grid_width = 7 * cell_width;
-    uint8_t grid_height = 6 * cell_height;
-    
-    // 绘制水平线
-    for (uint8_t i = 0; i <= 6; i++)
-    {
-        uint8_t y = y_start + i * cell_height;
-        Paint_DrawLine(x_start, y, x_start + grid_width, y, BLACK, DOT_PIXEL_1X1, LINE_STYLE_SOLID);
-    }
-    
-    // 绘制垂直线
-    for (uint8_t i = 0; i <= 7; i++)
-    {
-        uint8_t x = x_start + i * cell_width;
-        Paint_DrawLine(x, y_start, x, y_start + grid_height, BLACK, DOT_PIXEL_1X1, LINE_STYLE_SOLID);
-    }
-}
-
+ 
 /**
  * @brief 绘制日期数字
  * @param year 年份

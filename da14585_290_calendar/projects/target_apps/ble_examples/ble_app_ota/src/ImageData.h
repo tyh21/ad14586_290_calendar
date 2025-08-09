@@ -91,6 +91,12 @@ extern const unsigned char gImage_heavy_rain_32[128];
 extern const unsigned char gImage_cloudy_32[128];
 extern const unsigned char gImage_11[22496];
 extern const unsigned char gImage_777[11248];
+extern const unsigned char gImage_Sleep[638];                        //2.jpg
+extern const unsigned char gImage_Morning[638];                      //4.jpg
+extern const unsigned char gImage_Lunch[638];                        //3.jpg
+extern const unsigned char gImage_Work[638];                         //7.jpg
+
+
 #endif
 /* FILE END */
 

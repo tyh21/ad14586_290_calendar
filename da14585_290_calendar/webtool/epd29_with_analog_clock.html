@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>2.90电子价签蓝牙控制器 (V3 - 稳定版)</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+        button { padding: 8px 12px; margin: 4px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; }
+        .mode-button { background-color: #4CAF50; color: white; border: none; }
+        .mode-button:hover { background-color: #45a049; }
+        #log { height: 250px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; background-color: #f9f9f9; }
+        .section { border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        h2, h3, h4 { margin-top: 0; }
+        input[type="text"], input[type="number"] { padding: 5px; }
+    </style>
+    <!-- 您的外部JS文件，如果路径不正确请修改 -->
+    <script type="application/javascript" src="js/dithering.js"></script>
+    <script type="application/javascript" src="js/utils.js"></script>
+</head>
+<body>
+
+    <h2>2.90电子价签蓝牙控制器</h2>
+
+    <div class="section">
+        <h4>连接控制</h4>
+        <button id="connectButton" type="button">扫描并连接DLG设备</button>
+        <button id="disconnectButton" type="button" disabled>断开连接</button>
+    </div>
+
+    <div class="section">
+        <h4>显示模式控制</h4>
+        <button class="mode-button" type="button" onclick="switchToTimeMode()" title="切换到时间显示模式">时间模式</button>
+        <button class="mode-button" type="button" onclick="switchToCalendarAnalogMode()" title="切换到日历显示模式（模拟时钟）">日历模式（模拟）</button>
+        <button type="button" onclick="triggerRxTxCmd('e2')" title="刷新当前显示">刷新显示</button>
+    </div>
+
+    <div class="section">
+        <h4>时间设置</h4>
+        时区偏移: <input type="number" id="hour-offset" value="0" min="-12" max="12" step="1"> 小时  
+
+        <span id="time-setter" style="display: inline-block; margin: 5px 0;">设置时间为：</span>  
+
+        <button type="button" onclick="setTime()">设置时间</button>
+    </div>
+
+    <div class="section">
+        <h4>底层指令控制</h4>
+        <input type="text" id="cmdTXT" value="0055">
+        <button type="button" onclick="triggerEpdCmd(document.getElementById('cmdTXT').value);">发送EPD指令</button>
+    </div>
+
+    <h3>日志输出:</h3>
+    <div id="log"></div>
+
+    <script>
+        // --- 全局变量 ---
+        const connectButton = document.getElementById('connectButton');
+        const disconnectButton = document.getElementById('disconnectButton');
+        const logDiv = document.getElementById('log');
+
+        let bleDevice = null;
+        let gattServer = null;
+        let epdCharacteristic = null;
+        let rxtxCharacteristic = null;
+
+        // --- 日志函数 ---
+        function log(message) {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${message}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+
+        // --- 蓝牙核心功能 ---
+
+        // 扫描并建立完整连接
+        async function scanAndConnect() {
+            log("开始扫描名称以 'DLG' 开头的设备...");
+            connectButton.disabled = true;
+            connectButton.textContent = "正在扫描...";
+
+            try {
+                // 1. 请求设备 (使用已验证的配置)
+                bleDevice = await navigator.bluetooth.requestDevice({
+                    filters: [{ namePrefix: 'DLG' }],
+                    optionalServices: [
+                        '00001f10-0000-1000-8000-00805f9b34fb', // 串口服务
+                        '13187b10-eba9-a3ba-044e-83d3217d9a38'  // EPD服务
+                    ]
+                });
+
+                log(`已选择设备: ${bleDevice.name}`);
+                bleDevice.addEventListener('gattserverdisconnected', onDisconnected);
+
+                // 2. 连接GATT服务器
+                log("正在连接到GATT服务器...");
+                gattServer = await bleDevice.gatt.connect();
+                log("GATT服务器已连接！");
+
+                // 3. 获取所有需要的服务和特征
+                log("正在获取服务和特征...");
+                
+                // EPD服务
+                const epdService = await gattServer.getPrimaryService('13187b10-eba9-a3ba-044e-83d3217d9a38');
+                epdCharacteristic = await epdService.getCharacteristic('4b646063-6264-f3a7-8941-e65356ea82fe');
+                await epdCharacteristic.startNotifications();
+                epdCharacteristic.addEventListener('characteristicvaluechanged', (event) => {
+                    const count = parseInt('0x' + bytesToHex(event.target.value.buffer));
+                    log(`> [来自屏幕]: 收到${count} byte数据`);
+                });
+                log("> EPD服务已就绪。");
+
+                // RXTX (串口) 服务
+                const rxtxService = await gattServer.getPrimaryService('00001f10-0000-1000-8000-00805f9b34fb');
+                rxtxCharacteristic = await rxtxService.getCharacteristic('00001f1f-0000-1000-8000-00805f9b34fb');
+                log("> 串口服务已就绪。");
+
+                log("设备连接成功，所有服务准备就绪！");
+                
+                // 4. 更新UI
+                connectButton.textContent = '已连接';
+                disconnectButton.disabled = false;
+
+            } catch (error) {
+                if (error.name === 'NotFoundError') {
+                    log("扫描操作已取消，或未找到匹配的设备。");
+                } else {
+                    log(`发生错误: ${error.name} - ${error.message}`);
+                }
+                // 发生任何错误，都重置UI状态
+                onDisconnected(); 
+            }
+        }
+
+        // 断开连接
+        function disconnect() {
+            if (gattServer && gattServer.connected) {
+                log("正在断开连接...");
+                gattServer.disconnect();
+            } else {
+                log("已经处于断开状态。");
+                onDisconnected(); // 确保UI状态正确
+            }
+        }
+
+        // 当设备断开时触发的回调
+        function onDisconnected() {
+            log("设备连接已断开。");
+            bleDevice = null;
+            gattServer = null;
+            epdCharacteristic = null;
+            rxtxCharacteristic = null;
+            
+            connectButton.disabled = false;
+            connectButton.textContent = '扫描并连接DLG设备';
+            disconnectButton.disabled = true;
+        }
+
+        // --- 事件监听 ---
+        connectButton.addEventListener('click', scanAndConnect);
+        disconnectButton.addEventListener('click', disconnect);
+
+        // --- 您原来的应用逻辑函数 (无需修改) ---
+
+        async function sendCommand(cmd) {
+            if (epdCharacteristic && gattServer.connected) {
+                await epdCharacteristic.writeValueWithResponse(cmd);
+            } else {
+                log('错误: EPD服务不可用或已断开连接。');
+            }
+        }
+
+        async function rxTxSendCommand(cmd) {
+            if (rxtxCharacteristic && gattServer.connected) {
+                await rxtxCharacteristic.writeValueWithResponse(cmd);
+            } else {
+                log('错误: 串口服务不可用或已断开连接。');
+            }
+        }
+
+        async function setTime() {
+            const { unixNow, localeTimeString, year, month, day, week } = getUnixTime();
+            log("时间设置为: " + localeTimeString);
+            await rxTxSendCommand(hexToBytes('dd' + [intToHex(unixNow, 4), intToHex(year, 2), intToHex(month, 1), intToHex(day, 1), intToHex(week, 1)].join('')));
+            await rxTxSendCommand(hexToBytes('e2'));
+        }
+
+        async function switchToTimeMode() {
+            log('切换到时间显示模式');
+            await rxTxSendCommand(hexToBytes('e3'));
+        }
+
+        async function switchToCalendarAnalogMode() {
+            log('切换到日历显示模式（模拟时钟）');
+            await rxTxSendCommand(hexToBytes('e5'));
+        }
+
+        async function triggerRxTxCmd(cmd) {
+            log(`发送串口指令: ${cmd}`);
+            await rxTxSendCommand(hexToBytes(cmd));
+        }
+
+        async function triggerEpdCmd(cmd) {
+            log(`发送EPD指令: ${cmd}`);
+            await sendCommand(hexToBytes(cmd));
+        }
+
+        function getUnixTime() {
+            const hourOffset = document.getElementById('hour-offset').value;
+            const unixNow = Math.round(Date.now() / 1000) + (60 * 60 * hourOffset) - new Date().getTimezoneOffset() * 60;
+            const date = new Date((unixNow + new Date().getTimezoneOffset() * 60) * 1000);
+            const localeTimeString = date.toLocaleTimeString();
+            return { unixNow, localeTimeString, year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(), week: date.getDay() || 7 };
+        }
+
+        document.body.onload = () => {
+            setInterval(() => {
+                const { localeTimeString, year, month, day, week } = getUnixTime();
+                document.getElementById('time-setter').innerText = `设置时间为：${year}-${month}-${day} ${localeTimeString} 星期${week}`;
+            }, 1000);
+        };
+    </script>
+
+</body>
+</html>

@@ -40,8 +40,8 @@
 #include "lunar.h"
 #include "calendar_display.h"
 #include "analog_clock.h"
-//#include "otp_hdr.h"
 #include "co_bt.h"
+#include "ImageData.h"
 
 /*
  * GLOBAL VARIABLE DEFINITIONS
@@ -119,8 +119,101 @@ static void spi_flash_peripheral_init(void)
     EPD_CS_H;
 }
 
+// 定义图片尺寸和缓冲区大小
+#define IMAGE_WIDTH  70
+#define IMAGE_HEIGHT 70
+#define IMAGE_BUFFER_SIZE ((IMAGE_WIDTH * IMAGE_HEIGHT + 7) / 8)
+ // 定义图片缓冲区
+UBYTE Image_Buffer[IMAGE_BUFFER_SIZE];
+ // 声明在 image_data.c 中定义的图片数据
+//extern const unsigned char custom_image[]; 
+void DisplayCustomImage(void)
+ {
+    // 1. 初始化显示屏（这部分代码通常在您的主函数或初始化函数中）
+    // DEV_Module_Init(); // 假设这是初始化硬件的函数
+    // EPD_Init();        // 假设这是初始化电子墨水屏的函数
+    // 2. 初始化图像对象，将其与Image_Buffer关联
+    //    这里我们创建一个70x70的图像缓冲区，不旋转，背景色为白色
+    Paint_NewImage(Image_Buffer, IMAGE_WIDTH, IMAGE_HEIGHT, ROTATE_0, WHITE);
+    // 3. 选择当前要操作的图像缓冲区
+    Paint_SelectImage(Image_Buffer);
+    // 4. 清空图像缓冲区（可选，取决于您是否需要清除之前的显示内容）
+    Paint_Clear(WHITE); // 清空为白色背景
+    // 5. 将 custom_image 的点阵数据绘制到图像缓冲区中
+    Paint_DrawBitMap(gImage_heavy_rain_32);
+    // 6. 将图像缓冲区的内容发送到显示屏进行显示
+    //    Paint_DrawBitMap 函数会将 custom_image 的内容复制到 Image_Buffer 中
+    //Paint_DrawImage(const unsigned char *image_buffer, UWORD xStart, UWORD yStart, UWORD W_Image, UWORD H_Image,UWORD Color_Foreground, UWORD Color_Background)
+    //Paint_DrawImage(Image_Buffer,210,40,70,70,BLACK, WHITE);
+    //    这部分代码通常由您的显示屏驱动库提供，例如 Waveshare 的 EPD_Display 函数
+    EPD_2IN13_V2_Display(Image_Buffer);
+    // EPD_Display(Image_Buffer); // 假设这是将缓冲区内容显示到屏幕的函数
+    // 7. 延时或进入低功耗模式（可选）
+    // DEV_Delay_ms(5000); // 延时5秒
+    // EPD_Sleep();      // 进入低功耗模式
+}
+ 
+
 // 添加全局变量来存储当前显示模式
 uint8_t current_display_mode __SECTION_ZERO("retention_mem_area0");  // = DISPLAY_MODE_TIME;
+
+void do_time_show_diff(void)
+{
+// 定义图片绘制的坐标和尺寸
+const UWORD img_x = 200; // 图片绘制的起始X坐标
+const UWORD img_y = 30;  // 图片绘制的起始Y坐标
+const UWORD img_w = 70;  // 图片宽度
+const UWORD img_h = 70;  // 图片高度
+Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
+            Paint_SelectImage(epd_buffer);
+            Paint_SetMirroring(MIRROR_VERTICAL);
+            Paint_Clear(WHITE);
+            
+            sprintf(buf, "%d-%02d-%02d", g_tm.tm_year + YEAR0, g_tm.tm_mon + 1, g_tm.tm_mday);                   //年月日
+            EPD_DrawUTF8(5, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
+            sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]);                                                        //星期
+            EPD_DrawUTF8(5 + 125, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
+            if (g_tm.tm_hour<10){
+                sprintf(buf, "%01d", g_tm.tm_hour);
+                EPD_DrawUTF8(10, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+                EPD_DrawUTF8(10 + 86 - 50, 20 + 2, 5, ":", EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+                sprintf(buf, "%02d", g_tm.tm_min);
+                EPD_DrawUTF8(10 + 86 + 20-30, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE); 
+            }else {
+               sprintf(buf, "%02d", g_tm.tm_hour);
+                EPD_DrawUTF8(10, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+                EPD_DrawUTF8(10 + 86 - 10, 20 + 2, 5, ":", EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+                sprintf(buf, "%02d", g_tm.tm_min);
+                EPD_DrawUTF8(10 + 86 + 20, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE); 
+            }
+             // 创建一个指针，用于指向要显示的图片数据
+            const unsigned char* image_to_display = NULL;
+                // 晚上休息时间 (22:00 - 06:59)
+            if (g_tm.tm_hour<7||g_tm.tm_hour  >= 22 ) {
+                image_to_display = gImage_Sleep;
+                //sprintf(buf,"安心睡觉");                                             // = "安心睡眠";
+            } else if (g_tm.tm_hour < 11) {                       // 上午工作/学习时间 (07:00 - 10:59)
+                image_to_display = gImage_Morning;
+                //sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]); 
+            } else if (g_tm.tm_hour < 13) {
+                image_to_display = gImage_Lunch;
+                //sprintf(buf, "吃好喝好%s", WEEKCN[g_tm.tm_wday]);  
+            } else if (g_tm.tm_hour < 20) {
+                image_to_display = gImage_Work;
+                //sprintf(buf, "自由活动"); 
+            } else {
+                image_to_display = gImage_Work;
+                //sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]); 
+            }
+             // 如果找到了要显示的图片，就调用GUI函数绘制它
+            if (image_to_display != NULL) {
+            // 使用 Paint_DrawImage 函数将选定的图片绘制到屏幕缓冲区的指定位置
+            // 参数：图片数据, X坐标, Y坐标, 宽度, 高度, 前景色, 背景色
+            Paint_DrawImage(image_to_display, img_x, img_y, img_w, img_h, BLACK, WHITE);
+            //EPD_DrawUTF8(200, 50, 0, buf, EPD_40X80_TABLE, EPD_FontUTF8_16x16, BLACK, WHITE);
+             }
+}
+
 
 /**
  * @brief 修改后的显示更新函数，支持模拟时钟
@@ -152,20 +245,8 @@ void do_display_update_with_analog_clock(void)
     {
         case DISPLAY_MODE_TIME:
             // 原有的时间显示逻辑
-            Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
-            Paint_SelectImage(epd_buffer);
-            Paint_SetMirroring(MIRROR_VERTICAL);
-            Paint_Clear(WHITE);
+            do_time_show_diff();
             
-            sprintf(buf, "%d-%02d-%02d", g_tm.tm_year + YEAR0, g_tm.tm_mon + 1, g_tm.tm_mday);                   //年月日
-            EPD_DrawUTF8(5, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);
-            sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]);                                                        //星期
-            EPD_DrawUTF8(5 + 125, 1, 1, buf, EPD_ASCII_11X16, EPD_FontUTF8_16x16, BLACK, WHITE);                 //时间
-            sprintf(buf, "%02d", g_tm.tm_hour);
-            EPD_DrawUTF8(10, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
-            EPD_DrawUTF8(10 + 86 - 10, 20 + 2, 5, ":", EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
-            sprintf(buf, "%02d", g_tm.tm_min);
-            EPD_DrawUTF8(10 + 86 + 20, 20 + 2, 5, buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE); 
             // 获取并显示MAC地址后六位
             extern struct bd_addr dev_bdaddr;
             sprintf((char *)buf2, "MAC: %02X:%02X:%02X:%02X:%02X:%02X",

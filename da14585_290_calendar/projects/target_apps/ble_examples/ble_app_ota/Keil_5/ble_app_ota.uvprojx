@@ -1320,6 +1320,11 @@
               <FileType>5</FileType>
               <FilePath>..\src\analog_clock.h</FilePath>
             </File>
+            <File>
+              <FileName>ImageData.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ImageData.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2693,6 +2698,11 @@
               <FileType>5</FileType>
               <FilePath>..\src\analog_clock.h</FilePath>
             </File>
+            <File>
+              <FileName>ImageData.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ImageData.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3964,6 +3974,11 @@
               <FileType>5</FileType>
               <FilePath>..\src\analog_clock.h</FilePath>
             </File>
+            <File>
+              <FileName>ImageData.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ImageData.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5234,6 +5249,11 @@
               <FileName>analog_clock.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\analog_clock.h</FilePath>
+            </File>
+            <File>
+              <FileName>ImageData.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ImageData.h</FilePath>
             </File>
           </Files>
         </Group>
