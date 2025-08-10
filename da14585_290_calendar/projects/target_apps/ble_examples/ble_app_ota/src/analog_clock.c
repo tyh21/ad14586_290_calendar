@@ -113,7 +113,7 @@ static void draw_clock_hands(uint16_t center_x, uint16_t center_y, uint8_t hour,
     uint16_t minute_end_y = center_y + minute_hand_length * sin(minute_angle);
     
     // 绘制时针（较粗）
-    Paint_DrawLine(center_x, center_y, hour_end_x, hour_end_y, BLACK, DOT_PIXEL_3X3, LINE_STYLE_SOLID);
+    Paint_DrawLine(center_x, center_y, hour_end_x, hour_end_y, BLACK, DOT_PIXEL_4X4, LINE_STYLE_SOLID);
     
     // 绘制分针（较细）
     Paint_DrawLine(center_x, center_y, minute_end_x, minute_end_y, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);

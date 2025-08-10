@@ -95,7 +95,9 @@ extern const unsigned char gImage_Sleep[638];                        //2.jpg
 extern const unsigned char gImage_Morning[638];                      //4.jpg
 extern const unsigned char gImage_Lunch[638];                        //3.jpg
 extern const unsigned char gImage_Work[638];                         //7.jpg
-
+extern const unsigned char gImage_breakfast[620];                         //1.jpg
+extern const unsigned char gImage_dinner[638];                          //5.jpg
+extern const unsigned char gImage_rest[638];                          //9.jpg
 
 #endif
 /* FILE END */

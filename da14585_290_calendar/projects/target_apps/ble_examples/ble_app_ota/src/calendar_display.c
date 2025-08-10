@@ -109,7 +109,7 @@ static void draw_calendar_dates(uint16_t year, uint8_t month, uint8_t current_da
             // 绘制背景矩形
             Paint_DrawRectangle(x_start + col * cell_width + 1, 
                               y_start + row * cell_height + 3,
-                              x_start + (col + 1) * cell_width - 3,
+                              x_start + (col + 1) * cell_width - 2,
                               y_start + (row + 1) * cell_height+ 3,
                               BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
             

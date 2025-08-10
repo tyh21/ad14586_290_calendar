@@ -129,28 +129,12 @@ UBYTE Image_Buffer[IMAGE_BUFFER_SIZE];
 //extern const unsigned char custom_image[]; 
 void DisplayCustomImage(void)
  {
-    // 1. 初始化显示屏（这部分代码通常在您的主函数或初始化函数中）
-    // DEV_Module_Init(); // 假设这是初始化硬件的函数
-    // EPD_Init();        // 假设这是初始化电子墨水屏的函数
-    // 2. 初始化图像对象，将其与Image_Buffer关联
-    //    这里我们创建一个70x70的图像缓冲区，不旋转，背景色为白色
     Paint_NewImage(Image_Buffer, IMAGE_WIDTH, IMAGE_HEIGHT, ROTATE_0, WHITE);
     // 3. 选择当前要操作的图像缓冲区
     Paint_SelectImage(Image_Buffer);
-    // 4. 清空图像缓冲区（可选，取决于您是否需要清除之前的显示内容）
     Paint_Clear(WHITE); // 清空为白色背景
-    // 5. 将 custom_image 的点阵数据绘制到图像缓冲区中
     Paint_DrawBitMap(gImage_heavy_rain_32);
-    // 6. 将图像缓冲区的内容发送到显示屏进行显示
-    //    Paint_DrawBitMap 函数会将 custom_image 的内容复制到 Image_Buffer 中
-    //Paint_DrawImage(const unsigned char *image_buffer, UWORD xStart, UWORD yStart, UWORD W_Image, UWORD H_Image,UWORD Color_Foreground, UWORD Color_Background)
-    //Paint_DrawImage(Image_Buffer,210,40,70,70,BLACK, WHITE);
-    //    这部分代码通常由您的显示屏驱动库提供，例如 Waveshare 的 EPD_Display 函数
     EPD_2IN13_V2_Display(Image_Buffer);
-    // EPD_Display(Image_Buffer); // 假设这是将缓冲区内容显示到屏幕的函数
-    // 7. 延时或进入低功耗模式（可选）
-    // DEV_Delay_ms(5000); // 延时5秒
-    // EPD_Sleep();      // 进入低功耗模式
 }
  
 
@@ -160,7 +144,7 @@ uint8_t current_display_mode __SECTION_ZERO("retention_mem_area0");  // = DISPLA
 void do_time_show_diff(void)
 {
 // 定义图片绘制的坐标和尺寸
-const UWORD img_x = 200; // 图片绘制的起始X坐标
+const UWORD img_x = 210; // 图片绘制的起始X坐标
 const UWORD img_y = 30;  // 图片绘制的起始Y坐标
 const UWORD img_w = 70;  // 图片宽度
 const UWORD img_h = 70;  // 图片高度
@@ -192,17 +176,25 @@ Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
             if (g_tm.tm_hour<7||g_tm.tm_hour  >= 22 ) {
                 image_to_display = gImage_Sleep;
                 //sprintf(buf,"安心睡觉");                                             // = "安心睡眠";
-            } else if (g_tm.tm_hour < 11) {                       // 上午工作/学习时间 (07:00 - 10:59)
+            } else if (g_tm.tm_hour < 8) {                       // 上午工作/学习时间 (07:00 - 10:59)
+                image_to_display = gImage_breakfast;}
+                else if (g_tm.tm_hour < 11) {                       // 上午工作/学习时间 (07:00 - 10:59)
                 image_to_display = gImage_Morning;
                 //sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]); 
             } else if (g_tm.tm_hour < 13) {
                 image_to_display = gImage_Lunch;
-                //sprintf(buf, "吃好喝好%s", WEEKCN[g_tm.tm_wday]);  
-            } else if (g_tm.tm_hour < 20) {
+                //sprintf(buf, "吃好喝好%s", WEEKCN[g_tm.tm_wday]); 
+                } else if (g_tm.tm_hour < 14) {
+                image_to_display = gImage_rest;
+                //sprintf(buf, "吃好喝好%s", WEEKCN[g_tm.tm_wday]);   
+						} else if (g_tm.tm_hour < 19) {
                 image_to_display = gImage_Work;
                 //sprintf(buf, "自由活动"); 
+            } else if (g_tm.tm_hour < 20) {
+                image_to_display = gImage_dinner;
+                //sprintf(buf, "自由活动"); 
             } else {
-                image_to_display = gImage_Work;
+                image_to_display = gImage_rest;
                 //sprintf(buf, "星期%s", WEEKCN[g_tm.tm_wday]); 
             }
              // 如果找到了要显示的图片，就调用GUI函数绘制它
@@ -212,8 +204,47 @@ Paint_NewImage(epd_buffer, EPD_2IN13_V2_WIDTH, EPD_2IN13_V2_HEIGHT, 270, WHITE);
             Paint_DrawImage(image_to_display, img_x, img_y, img_w, img_h, BLACK, WHITE);
             //EPD_DrawUTF8(200, 50, 0, buf, EPD_40X80_TABLE, EPD_FontUTF8_16x16, BLACK, WHITE);
              }
+            // 获取并显示MAC地址后六位
+            extern struct bd_addr dev_bdaddr;
+            sprintf((char *)buf2, "MAC: %02X:%02X:%02X:%02X:%02X:%02X",
+            dev_bdaddr.addr[5], dev_bdaddr.addr[4], dev_bdaddr.addr[3],
+            dev_bdaddr.addr[2], dev_bdaddr.addr[1], dev_bdaddr.addr[0]);
+            EPD_DrawUTF8(80, 128-14, 0, (const char *)buf2, EPD_ASCII_7X12, 0, BLACK, WHITE);
+             // 获取并显示MAC地址后六位     
 }
 
+void do_time_show_diff_part(void) 
+{
+    char min_buf[3]; 
+    // 重新选择图像缓冲区，但不需要重新初始化或清空整个缓冲区 
+    Paint_SelectImage(epd_buffer); 
+    Paint_SetMirroring(MIRROR_VERTICAL); 
+
+    // 根据小时数的位数，确定分钟数字的起始X坐标
+    UWORD min_x_start;
+    if (g_tm.tm_hour < 10) 
+    {
+        // 小时为一位数时，分钟的X坐标是 10 + 86 + 20 - 30 = 86
+        min_x_start = 86;
+    } else { 
+        // 小时为两位数时，分钟的X坐标是 10 + 86 + 20 = 116
+        min_x_start = 116;
+    }
+
+    // 分钟数字的Y坐标是 20 + 2 = 22
+    UWORD min_y_start = 22;
+    // 分钟数字的宽度是 2个字符 * 40像素/字符 = 80像素
+    UWORD min_width = 80;
+    // 分钟数字的高度是 80像素
+    UWORD min_height = 80;
+
+    // 擦除旧的分钟数字区域
+    Paint_ClearWindows(min_x_start-1, min_y_start-1, min_x_start + min_width+1, min_y_start + min_height+1, WHITE); 
+
+    // 重新绘制分钟数字 
+    sprintf(min_buf, "%02d", g_tm.tm_min);
+    EPD_DrawUTF8(min_x_start, min_y_start, 5, min_buf, EPD_40X80_TABLE, EPD_FontUTF8_24x24, BLACK, WHITE);
+}
 
 /**
  * @brief 修改后的显示更新函数，支持模拟时钟
@@ -245,15 +276,12 @@ void do_display_update_with_analog_clock(void)
     {
         case DISPLAY_MODE_TIME:
             // 原有的时间显示逻辑
-            do_time_show_diff();
-            
-            // 获取并显示MAC地址后六位
-            extern struct bd_addr dev_bdaddr;
-            sprintf((char *)buf2, "MAC: %02X:%02X:%02X:%02X:%02X:%02X",
-            dev_bdaddr.addr[5], dev_bdaddr.addr[4], dev_bdaddr.addr[3],
-            dev_bdaddr.addr[2], dev_bdaddr.addr[1], dev_bdaddr.addr[0]);
-            EPD_DrawUTF8(80, 128-14, 0, (const char *)buf2, EPD_ASCII_7X12, 0, BLACK, WHITE);
-             // 获取并显示MAC地址后六位     
+            //do_time_show_diff();
+                if (force_redraw) {
+                do_time_show_diff(); // 全屏重绘 
+                } else if (minute_changed) {
+                do_time_show_diff_part(); // 局部刷新分钟数字 
+            }
             break;
             
         case DISPLAY_MODE_CALENDAR:
