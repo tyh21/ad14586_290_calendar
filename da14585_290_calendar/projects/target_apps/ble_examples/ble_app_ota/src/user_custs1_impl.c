@@ -239,7 +239,7 @@ void do_time_show_diff_part(void)
     UWORD min_height = 80;
 
     // 擦除旧的分钟数字区域
-    Paint_ClearWindows(min_x_start-1, min_y_start-1, min_x_start + min_width+1, min_y_start + min_height+1, WHITE); 
+    Paint_ClearWindows(min_x_start, min_y_start, min_x_start + min_width, min_y_start + min_height, WHITE); 
 
     // 重新绘制分钟数字 
     sprintf(min_buf, "%02d", g_tm.tm_min);
@@ -280,7 +280,8 @@ void do_display_update_with_analog_clock(void)
                 if (force_redraw) {
                 do_time_show_diff(); // 全屏重绘 
                 } else if (minute_changed) {
-                do_time_show_diff_part(); // 局部刷新分钟数字 
+                do_time_show_diff(); // 全屏重绘 
+                //    do_time_show_diff_part(); // 局部刷新分钟数字 
             }
             break;
             
